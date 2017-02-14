@@ -4,5 +4,6 @@ version = "0.1.0"
 authors = ["Florian Jackisch <f.jackisch@ifn.ing.tu-bs.de>"]
 
 [dependencies]
+rand = "0.3.0"
 futures = "0.1.7"
 futures-cpupool = "0.1.3"
