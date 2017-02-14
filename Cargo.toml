@@ -1,0 +1,6 @@
+[package]
+name = "stream-test"
+version = "0.1.0"
+authors = ["Florian Jackisch <f.jackisch@ifn.ing.tu-bs.de>"]
+
+[dependencies]
