@@ -1,4 +1,5 @@
 extern crate futures;
+extern crate futures_cpupool;
 
 use futures::{Future, Sink, Stream};
 
@@ -11,11 +12,18 @@ fn main() {
         }
     });
 
+    // generate a thread pool
+    let pool = futures_cpupool::CpuPool::new_num_cpus();
+
+    // process input
     let rx = rx.and_then(|i| {
-        println!("{}", i);
-        Ok(i)
+        pool.spawn_fn(move || {
+            println!("{}", i);
+            Ok(i)
+        })
     });
 
+    // consume stream
     rx.collect().wait().unwrap();
 
     handle.join().unwrap();
