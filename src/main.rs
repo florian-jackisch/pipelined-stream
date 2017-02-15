@@ -61,6 +61,8 @@ fn main() {
         });
 
     // consume stream
-    rx.collect().wait().unwrap();
+    for r in rx.wait() {
+        r.unwrap();
+    }
     handle.join().unwrap();
 }
